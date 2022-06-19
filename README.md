@@ -13,7 +13,11 @@ TODO/Features
 - [X] Plates cannot contain spaces, lowercase letters or Turkish characters.
 - [X] Cars can be deleted or updated.
 - [X] There should be a service that brings the vehicles according to the brand and model.
-
+- 
+## Controllers
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/Controllers.png"></img>
+## Schemas
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/Schemas.png"></img>
 #### Register User
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/1-signUpSaved.png"></img>
 #### Register User - Username is already taken - Error
@@ -66,9 +70,8 @@ TODO/Features
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/25-userDeleted.png"></img>
 #### Get Car with brand and model
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/26-getCarWith2.png"></img>
-#### Get user owned cars
-<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/22-getCars.png"></img>
-#### Get user owned cars
-<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/22-getCars.png"></img>
+#### Logout
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/27-logout.png"></img>
+
 
 
