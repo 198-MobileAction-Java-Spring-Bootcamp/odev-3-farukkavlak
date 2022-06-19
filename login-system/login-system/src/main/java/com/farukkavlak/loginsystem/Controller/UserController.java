@@ -47,6 +47,9 @@ public class UserController {
         return userService.getCars();
     }
 
-
+    @PostMapping("/logout")
+    public ResponseEntity logout(){
+        return  userService.logout();
+    }
 
 }

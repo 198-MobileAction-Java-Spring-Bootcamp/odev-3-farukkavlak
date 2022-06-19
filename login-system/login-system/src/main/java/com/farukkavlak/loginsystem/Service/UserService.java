@@ -105,4 +105,9 @@ public class UserService {
     private boolean isEqualsNewPasswords(UserChangePasswordDto userChangePasswordDto) {
         return userChangePasswordDto.getNewPassword().equals(userChangePasswordDto.getNewPasswordCheck());
     }
+
+    public ResponseEntity logout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return new ResponseEntity("Logout is successful",HttpStatus.OK);
+    }
 }
