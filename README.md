@@ -75,7 +75,7 @@ TODO/Features
 #### Register User Password Validation - Error
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/28-signupPasswordStrength.png"></img>
 #### Register User Password Validation - Error
-<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/30-signupPasswordStrength2.png"></img>
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/29-signupPasswordStrength2.png"></img>
 #### Register User Password Validation
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/30-signupPasswordStrength3.png"></img>
 #### Change Password Validation - Error
