@@ -89,22 +89,22 @@ public class CarService {
         return car.getPlate().length() < 7
                 || car.getPlate().length() > 8
                 || car.getPlate().contains(" ")
-                || containsLowerCase(car.getPlate())
-                || containsTurkishLetter(car.getPlate());
+                || isContainLowerCase(car.getPlate())
+                || isContainTurkishLetter(car.getPlate());
     }
-    private boolean containsTurkishLetter(String plate) {
-        for(int letterNo=0;letterNo<plate.length();letterNo++){
-            if(plate.charAt(letterNo)>=97&&plate.charAt(letterNo)<=122){
+    private boolean isContainTurkishLetter(String plate) {
+        char[] turkishLetters = {'Ç', 'Ğ', 'İ', 'Ö', 'Ş', 'Ü'};
+        for (char letter : turkishLetters) {
+            if (plate.indexOf(letter) != -1) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean containsLowerCase(String plate) {
-        char[] turkishLetters = {'Ç', 'Ğ', 'İ', 'Ö', 'Ş', 'Ü'};
-        for (char letter : turkishLetters) {
-            if (plate.indexOf(letter) != -1) {
+    private boolean isContainLowerCase(String plate) {
+        for(int letterNo=0;letterNo<plate.length();letterNo++){
+            if(plate.charAt(letterNo)>=97&&plate.charAt(letterNo)<=122){
                 return true;
             }
         }

@@ -17,6 +17,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 @Service
 public class UserService {
@@ -28,17 +31,22 @@ public class UserService {
         UserMapper userMapper = new UserMapper();
         // check for username exists in a DB
         if(userDao.existsByUsername(saveRequestDto.getUsername())){
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Username is already taken!", HttpStatus.BAD_REQUEST);
         }
         // heck for email exists in DB
         if(userDao.existsByEmail(saveRequestDto.getEmail())){
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Email is already taken!", HttpStatus.BAD_REQUEST);
+        }
+        String password = saveRequestDto.getPassword();
+        if(!isPasswordStrengthEnough(password)){
+            return new ResponseEntity("Your password is not strong enough. Your password must contain at least one uppercase letter, one lowercase letter, one number and one symbol.",HttpStatus.BAD_REQUEST);
         }
         // create user object
         User user = userMapper.convertToUser(saveRequestDto);
         userDao.save(user);
         return new ResponseEntity<>("User saved", HttpStatus.CREATED);
     }
+
     public ResponseEntity loginUser(UserLoginDto userLoginDto){
         Authentication authentication;
         try {
@@ -60,6 +68,9 @@ public class UserService {
         if(!isCorrect(userChangePasswordDto, user, passwordEncoder)){
             return new ResponseEntity<>("Old password is not correct", HttpStatus.BAD_REQUEST);
         }
+        else if(!isPasswordStrengthEnough(userChangePasswordDto.getNewPassword())){
+            return new ResponseEntity("Your password is not strong enough. Your password must contain at least one uppercase letter, one lowercase letter, one number and one symbol.",HttpStatus.BAD_REQUEST);
+        }
         else if(isEqualsNewPasswords(userChangePasswordDto)) {
             user.setPassword(passwordEncoder.encode(userChangePasswordDto.getNewPassword()));
             userDao.save(user);
@@ -76,12 +87,15 @@ public class UserService {
         userDao.delete(user);
         return new ResponseEntity<>("User Deleted", HttpStatus.OK);
     }
-
+    public ResponseEntity logout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return new ResponseEntity("Logout is successful",HttpStatus.OK);
+    }
 
     /*
     Helper functions
     */
-     public User getLoggedUser() {
+    public User getLoggedUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
         if(principal instanceof UserDetails){
@@ -106,8 +120,42 @@ public class UserService {
         return userChangePasswordDto.getNewPassword().equals(userChangePasswordDto.getNewPasswordCheck());
     }
 
-    public ResponseEntity logout() {
-        SecurityContextHolder.getContext().setAuthentication(null);
-        return new ResponseEntity("Logout is successful",HttpStatus.OK);
+
+    //Use regex to determine if password contains symbols
+    private boolean isContainSymbol(String password) {
+        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+        Matcher hasSpecial = special.matcher(password);
+        return hasSpecial.find();
+    }
+    //Use regex to determine if password contains number
+    private boolean isContainNumber(String password) {
+        Pattern digit = Pattern.compile("[0-9]");
+        Matcher hasDigit = digit.matcher(password);
+        return hasDigit.find();
+    }
+    //Use regex to determine if password contains upper case
+    private boolean isContainUpperCase(String password) {
+        for(int letterNo=0;letterNo<password.length();letterNo++){
+            if(password.charAt(letterNo)>=65&&password.charAt(letterNo)<=90){
+                return true;
+            }
+        }
+        return false;
+    }
+    //Use regex to determine if password contains lower case
+    private boolean isContainLowerCase(String password) {
+        for(int letterNo=0;letterNo<password.length();letterNo++){
+            if(password.charAt(letterNo)>=97&&password.charAt(letterNo)<=122){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isPasswordStrengthEnough(String password) {
+        return isContainUpperCase(password)
+                && isContainLowerCase(password)
+                && isContainNumber(password)
+                && isContainSymbol(password);
     }
 }
