@@ -13,7 +13,6 @@ TODO/Features
 - [X] Plates cannot contain spaces, lowercase letters or Turkish characters.
 - [X] Cars can be deleted or updated.
 - [X] There should be a service that brings the vehicles according to the brand and model.
-- 
 ## Controllers
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/Controllers.png"></img>
 ## Schemas
