@@ -2,6 +2,7 @@
 Car Registration System;<br>
 TODO/Features
 - [X] Registration user with name,surname,username,email and password
+- [X] Password validation - Password must contain at least one uppercase letter, one lowercase letter, one number and one symbol.(This feature was added last, so some images have no password validation.)
 - [X] It is not possible to register to the system with the same user name or email.
 - [X] The user can only change his password, to do this user must be logged in. This is not a "I forgot password "feature.The password should be kept in the database in an encoded.
 - [X] The password should be kept in the database in an encoded.
@@ -71,6 +72,13 @@ TODO/Features
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/26-getCarWith2.png"></img>
 #### Logout
 <img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/27-logout.png"></img>
-
+#### Register User Password Validation - Error
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/28-signupPasswordStrength.png"></img>
+#### Register User Password Validation - Error
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/30-signupPasswordStrength2.png"></img>
+#### Register User Password Validation
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/30-signupPasswordStrength3.png"></img>
+#### Change Password Validation - Error
+<img src="https://github.com/198-MobileAction-Java-Spring-Bootcamp/odev-3-farukkavlak/blob/main/SwaggerUI/31-changePasswordStrength.png"></img>
 
 
